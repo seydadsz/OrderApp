@@ -20,14 +20,14 @@ The following information must be supplied by the project owner:
 
 Example structure:
 
+```json
 "EmailSettings": {
-"Host": "smtp.gmail.com",
-"Port": 587,
-"EnableSSL": true,
-"UserName": "USER_GMAIL_ADDRESS",
-"Password": "GMAIL_APP_PASSWORD"
+  "Host": "smtp.gmail.com",
+  "Port": 587,
+  "EnableSSL": true,
+  "UserName": "USER_GMAIL_ADDRESS",
+  "Password": "GMAIL_APP_PASSWORD"
 }
-
 
 ### ✔ Why This Information Is Required
 
