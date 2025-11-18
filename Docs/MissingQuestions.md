@@ -1,42 +1,43 @@
-# 📌 Gmail Integration – Detailed Project Explanation
-
-In OrderApp, email delivery is **mandatory** because order confirmation requires sending a token-based confirmation link to the customer.  
-To enable this, the user must provide SMTP credentials for their own Gmail or corporate email account.
+# ❓ Missing Information – Question List  
+This document lists the questions and clarifications required from the project owner to fully define the OrderApp requirements.
 
 ---
 
-# ✔ Required Email Settings (Mandatory for System Operation)
+## 1. 📨 Email & SMTP Configuration (Gmail Integration)
 
-The following configuration must be manually added to `appsettings.json`:
+1. Which SMTP provider will be used for sending order confirmation emails?  
+   - Gmail  
+   - Corporate SMTP  
+   - Office365  
+   - Other (please specify)
 
-```json
-"EmailSettings": {
-  "Host": "smtp.gmail.com",
-  "Port": 587,
-  "EnableSSL": true,
-  "UserName": "USER_GMAIL_ADDRESS",
-  "Password": "GMAIL_APP_PASSWORD"
-}
+2. If **Gmail** will be used, will each deployment environment use its **own Gmail account and App Password**?
 
-# 🌐 Localhost Browser Compatibility Notice
+3. The application expects the following configuration in `appsettings.json`:
 
-During development and testing, the application runs best on **Microsoft Edge**.
+   - Host  
+   - Port  
+   - EnableSSL  
+   - UserName (sender email address)  
+   - Password (App Password or SMTP password)
 
-## ✅ Advantages with Microsoft Edge
+   Without valid values, the order confirmation process (email + token) will **not work**.  
+   Can you provide the final SMTP configuration details for production?
 
-- ✔ Email confirmation links open correctly
-- ✔ HTTPS / localhost cookie handling is more stable  
-- ✔ MVC routing behaves more consistently
-- ✔ Debugging works faster and smoother
+4. Should Gmail **App Password** be used, or will a dedicated corporate SMTP user be provided?
 
-## ⚠️ Notes on Other Browsers
+5. Security clarification:  
+   - Should we store SMTP credentials using user secrets / environment variables instead of committing them to the repository?
 
-Other browsers (Chrome, Firefox) work as well but may cause:
 
-- Token link not opening properly
-- Mixed-content warnings  
-- Localhost security restrictions
+## 2. 🌐 Localhost & Browser Compatibility
 
-## 💡 Recommendation
+1. During development, the application has been tested primarily on **Microsoft Edge** and works most reliably there.  
+   - Do you have an official browser support requirement (Edge, Chrome, Firefox, etc.)?
 
-**Recommended browser for running OrderApp locally: Microsoft Edge**
+2. Do we need to guarantee full compatibility with all major browsers, or is Edge support sufficient for internal use?
+
+**Note:** For local development, Microsoft Edge has shown:  
+- More stable handling of `https://localhost`  
+- Fewer issues with token-based confirmation links  
+- Better behavior with MVC routing and cookies
