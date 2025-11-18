@@ -1,43 +1,79 @@
-# ❓ Missing Information – Question List  
-This document lists the questions and clarifications required from the project owner to fully define the OrderApp requirements.
+# ❓ Missing Information – Critical Questions  
+This document includes only the required clarifications for **Email (SMTP/Gmail) integration** and **Browser compatibility** for running the OrderApp system.
 
 ---
 
-## 1. 📨 Email & SMTP Configuration (Gmail Integration)
+## 📨 1. Email & SMTP (Gmail) Configuration Requirements
 
-1. Which SMTP provider will be used for sending order confirmation emails?  
-   - Gmail  
-   - Corporate SMTP  
-   - Office365  
-   - Other (please specify)
+OrderApp uses **email confirmation** to validate orders.  
+For this reason, correct SMTP information must be provided by the user.
 
-2. If **Gmail** will be used, will each deployment environment use its **own Gmail account and App Password**?
+### ✔ Mandatory Values for appsettings.json
 
-3. The application expects the following configuration in `appsettings.json`:
+The following information must be supplied by the project owner:
 
-   - Host  
-   - Port  
-   - EnableSSL  
-   - UserName (sender email address)  
-   - Password (App Password or SMTP password)
+- SMTP Host  
+- Port  
+- EnableSSL (true/false)  
+- Gmail Address (UserName)  
+- Gmail App Password (Password)
 
-   Without valid values, the order confirmation process (email + token) will **not work**.  
-   Can you provide the final SMTP configuration details for production?
+Example structure:
 
-4. Should Gmail **App Password** be used, or will a dedicated corporate SMTP user be provided?
+"EmailSettings": {
+"Host": "smtp.gmail.com",
+"Port": 587,
+"EnableSSL": true,
+"UserName": "USER_GMAIL_ADDRESS",
+"Password": "GMAIL_APP_PASSWORD"
+}
 
-5. Security clarification:  
-   - Should we store SMTP credentials using user secrets / environment variables instead of committing them to the repository?
+
+### ✔ Why This Information Is Required
+
+- Gmail requires a **personal App Password** for sending emails.  
+- Without correct SMTP credentials:
+  - Email sending will fail  
+  - The confirmation link will not reach the user  
+  - Orders will **never get confirmed**
+
+### ❓ Clarification Required From Project Owner
+
+**Will the system use Gmail or a corporate SMTP server?**  
+- If Gmail → User must generate an App Password and enter it manually.  
+- If corporate SMTP → Details must be shared (host, port, username, password).
+
+---
+
+## 🌐 2. Browser Compatibility (Localhost Behavior)
+
+During development, the project has been tested on several browsers.
+
+### ✔ Most Stable Browser: **Microsoft Edge**
+
+Edge provides:
+
+- More stable `https://localhost` handling  
+- Better compatibility with MVC routing  
+- Fewer cookie/security warnings  
+- More consistent behavior for token-based email confirmation links  
+
+### ❓ Clarification Required From Project Owner
+
+**Is there an official browser requirement for the system?**
+
+Options may include:
+
+- Microsoft Edge (recommended for development)
+- Google Chrome
+- Mozilla Firefox
+- Company-specific browser policy
+
+If cross-browser support is required, this must be confirmed.
+
+---
+
+### ✍ Document Author  
+**Şeyda Adsız**  
 
 
-## 2. 🌐 Localhost & Browser Compatibility
-
-1. During development, the application has been tested primarily on **Microsoft Edge** and works most reliably there.  
-   - Do you have an official browser support requirement (Edge, Chrome, Firefox, etc.)?
-
-2. Do we need to guarantee full compatibility with all major browsers, or is Edge support sufficient for internal use?
-
-**Note:** For local development, Microsoft Edge has shown:  
-- More stable handling of `https://localhost`  
-- Fewer issues with token-based confirmation links  
-- Better behavior with MVC routing and cookies
