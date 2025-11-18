@@ -20,7 +20,6 @@ The following information must be supplied by the project owner:
 
 Example structure:
 
-```json
 "EmailSettings": {
   "Host": "smtp.gmail.com",
   "Port": 587,
