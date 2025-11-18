@@ -1,0 +1,92 @@
+﻿@model List<OrderApp.Models.ProductPriceWithProduct>
+
+<div class="container mt-4">
+
+    <div class="d-flex justify-content-between mb-3">
+        <h2 class="mb-0">Product Prices</h2>
+
+        <a class="btn btn-primary" asp-action="Create">
+            <i class="bi bi-plus-circle"></i> Add New Price
+        </a>
+    </div>
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success shadow-sm">
+            @TempData["Success"]
+        </div>
+    }
+
+    @foreach (var group in Model.GroupBy(x => x.StockName))
+    {
+        var ordered = group.OrderByDescending(x => x.ValidFrom).ToList();
+        var latest = ordered.First();
+        string collapseId = "collapse_" + Guid.NewGuid().ToString("N");
+
+        <div class="card mb-4 shadow-sm border-0">
+
+            <!-- Üst kısım: Ürün + Son Fiyat -->
+            <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                <strong>@group.Key</strong>
+
+                <div class="d-flex align-items-center">
+
+                    <span class="badge bg-success me-3 p-2" style="font-size:1rem;">
+                        @latest.Price.ToString("C")
+                    </span>
+
+                    <small class="me-3">
+                        <i class="bi bi-clock-history"></i>
+                        @latest.ValidFrom.ToString("yyyy-MM-dd HH:mm")
+                    </small>
+
+                    <!-- SADECE SON FİYATTA EDIT -->
+                    <a class="btn btn-warning btn-sm me-2"
+                       asp-controller="ProductPrices"
+                       asp-action="Edit"
+                       asp-route-id="@latest.Id">
+                        <i class="bi bi-pencil-square"></i> Edit
+                    </a>
+
+                    <!-- Aç/Kapat -->
+                    <button class="btn btn-secondary btn-sm"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#@collapseId">
+                        <i class="bi bi-chevron-down"></i> History
+                    </button>
+
+                </div>
+            </div>
+
+            <!-- GEÇMİŞ FİYATLAR -->
+            <div id="@collapseId" class="collapse">
+                <div class="card-body p-0">
+
+                    <table class="table table-hover mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Price</th>
+                                <th>Valid From</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach (var item in ordered.Skip(1))
+                            {
+                                <tr class="text-muted">
+                                    <td>@item.Price.ToString("C")</td>
+                                    <td>@item.ValidFrom.ToString("yyyy-MM-dd HH:mm")</td>
+                                </tr>
+                            }
+                        </tbody>
+
+                    </table>
+
+                </div>
+            </div>
+
+        </div>
+    }
+
+</div>

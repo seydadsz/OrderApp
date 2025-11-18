@@ -1,0 +1,35 @@
+﻿@model OrderApp.Models.Order
+
+<h2>Create Order</h2>
+
+<form asp-action="Create" method="post">
+
+    <div class="form-group">
+        <label>Customer</label>
+        <select class="form-control" asp-for="CustomerId">
+            @foreach (var c in ViewBag.Customers)
+            {
+                <option value="@c.Id">@c.CustomerName</option>
+            }
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label>Product</label>
+        <select class="form-control" asp-for="ProductId">
+            @foreach (var p in ViewBag.Products)
+            {
+                <option value="@p.Id">@p.StockName</option>
+            }
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label>Quantity</label>
+        <input class="form-control" asp-for="Quantity" />
+    </div>
+
+    <button type="submit" class="btn btn-success">Save Order</button>
+    <a class="btn btn-secondary" href="/Orders/Index">Cancel</a>
+
+</form>

@@ -1,0 +1,42 @@
+﻿@model OrderApp.Models.ProductPrice
+
+@{
+    ViewData["Title"] = "Update Price";
+}
+
+<div class="container mt-4">
+
+    <h2>Update Price</h2>
+
+    <div class="card shadow-sm mt-3">
+        <div class="card-body">
+
+            <form method="post">
+
+                <input type="hidden" asp-for="ProductId" />
+
+                <!-- Ürün Adı (Sadece Gösterim) -->
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Product</label>
+                    <input class="form-control" value="@ViewBag.ProductName" disabled />
+                </div>
+
+                <!-- Yeni Fiyat -->
+                <div class="mb-3">
+                    <label class="form-label fw-bold">New Price</label>
+                    <input asp-for="Price" class="form-control" placeholder="Enter new price" />
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+
+                <button type="submit" class="btn btn-primary">
+                    <i class="bi bi-save"></i> Save New Price
+                </button>
+
+                <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+
+            </form>
+
+        </div>
+    </div>
+
+</div>

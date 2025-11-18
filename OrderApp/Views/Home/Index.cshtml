@@ -1,0 +1,63 @@
+﻿<div class="row mb-4">
+
+    <!-- Total Products -->
+    <div class="col-md-3">
+        <div class="card shadow-sm border-0" style="background: linear-gradient(45deg, #007bff, #4dabff); color: white;">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h3 class="fw-bold">@ViewBag.TotalProducts</h3>
+                        <p class="mb-0">Products</p>
+                    </div>
+                    <i class="bi bi-box-seam" style="font-size: 2.5rem;"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Total Customers -->
+    <div class="col-md-3">
+        <div class="card shadow-sm border-0" style="background: linear-gradient(45deg, #28a745, #71dd8a); color: white;">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h3 class="fw-bold">@ViewBag.TotalCustomers</h3>
+                        <p class="mb-0">Customers</p>
+                    </div>
+                    <i class="bi bi-people-fill" style="font-size: 2.5rem;"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Total Orders -->
+    <div class="col-md-3">
+        <div class="card shadow-sm border-0" style="background: linear-gradient(45deg, #17a2b8, #69d6e7); color: white;">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h3 class="fw-bold">@ViewBag.TotalOrders</h3>
+                        <p class="mb-0">Orders</p>
+                    </div>
+                    <i class="bi bi-receipt" style="font-size: 2.5rem;"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pending Confirmations -->
+    <div class="col-md-3">
+        <div class="card shadow-sm border-0" style="background: linear-gradient(45deg, #dc3545, #ff6b81); color: white;">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h3 class="fw-bold">@ViewBag.PendingOrders</h3>
+                        <p class="mb-0">Pending</p>
+                    </div>
+                    <i class="bi bi-hourglass-split" style="font-size: 2.5rem;"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

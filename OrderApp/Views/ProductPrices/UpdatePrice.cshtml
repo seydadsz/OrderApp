@@ -1,0 +1,31 @@
+﻿@model OrderApp.Models.Product
+
+<h2>Update Price — @Model.StockName</h2>
+
+@if (ViewBag.LatestPrice != null)
+{
+    <p>
+        Current Price:
+        <strong>@((decimal)ViewBag.LatestPrice)</strong>
+    </p>
+}
+else
+{
+    <p class="text-muted">No price defined yet for this product.</p>
+}
+
+<form asp-action="UpdatePrice" method="post">
+    <input type="hidden" name="productId" value="@Model.Id" />
+
+    <div class="form-group mb-2">
+        <label>New Price</label>
+        <input type="number"
+               name="price"
+               step="0.01"
+               class="form-control"
+               required />
+    </div>
+
+    <button type="submit" class="btn btn-success mt-2">Save</button>
+    <a asp-controller="Products" asp-action="Index" class="btn btn-secondary mt-2">Cancel</a>
+</form>

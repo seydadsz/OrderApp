@@ -1,0 +1,87 @@
+﻿@model List<OrderApp.Models.OrderWithDetails>
+@using System.Globalization
+
+<h2 class="mt-3 mb-4">Orders</h2>
+
+<div class="d-flex justify-content-between mb-3">
+    <a class="btn btn-primary" href="/Orders/Create">
+        <i class="bi bi-plus-circle"></i> Create Order
+    </a>
+</div>
+
+<div class="card shadow-sm border-0">
+
+    <div class="card-body p-0">
+
+        <table class="table table-hover mb-0">
+            <thead class="table-dark">
+                <tr>
+                    <th>Order No</th>
+                    <th>Customer</th>
+                    <th>Product</th>
+                    <th>Qty</th>
+                    <th>Unit Price</th>
+                    <th>Total</th>
+                    <th>Status</th>
+                    <th>Created</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        
+                        <td>
+                            <span class="fw-bold">@item.OrderNumber</span>
+                        </td>
+
+                        
+                        <td>
+                            <span class="badge bg-primary px-3 py-2">@item.CustomerName</span>
+                        </td>
+
+                        
+                        <td>
+                            <span class="badge bg-secondary px-3 py-2">@item.StockName</span>
+                        </td>
+
+                        
+                        <td>@item.Quantity</td>
+
+                       
+                        <td>@item.UnitPrice.ToString("C", new CultureInfo("tr-TR"))</td>
+
+                        
+                        <td>
+                            <strong class="text-success">
+                                @((item.UnitPrice * item.Quantity).ToString("C", new CultureInfo("tr-TR")))
+                            </strong>
+                        </td>
+
+                       
+                        <td>
+                            @if (item.IsConfirmed)
+                            {
+                                <span class="badge bg-success px-3 py-2">
+                                    <i class="bi bi-check-circle"></i> Confirmed
+                                </span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-danger px-3 py-2">
+                                    <i class="bi bi-x-circle"></i> Pending
+                                </span>
+                            }
+                        </td>
+
+                        
+                        <td>@item.CreatedAt.ToString("yyyy-MM-dd HH:mm")</td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    </div>
+
+</div>

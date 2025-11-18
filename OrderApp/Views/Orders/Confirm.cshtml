@@ -1,0 +1,15 @@
+﻿@model OrderApp.Models.Order
+
+<h2>Order Confirmed</h2>
+
+<p>Your order has been confirmed successfully.</p>
+
+<ul>
+    <li><b>Order Number:</b> @Model.OrderNumber</li>
+    <li><b>Customer ID:</b> @Model.CustomerId</li>
+    <li><b>Product ID:</b> @Model.ProductId</li>
+    <li><b>Quantity:</b> @Model.Quantity</li>
+    <li><b>Total Price:</b> @(Model.UnitPrice* Model.Quantity)</li>
+</ul>
+
+<a class="btn btn-primary" href="/Orders">Back to Orders</a>

@@ -1,0 +1,113 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
+  color: var(--bs-secondary-color);
+  text-align: end;
+}
+
+.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
+  text-align: start;
+}
+
+.sidebar {
+    width: 230px;
+    height: 100vh;
+    background: #1e1e2d;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-top: 30px;
+    color: #fff;
+    z-index: 1000;
+}
+
+    .sidebar .menu-item {
+        padding: 12px 20px;
+        color: #c7c7d1;
+        display: block;
+        text-decoration: none;
+        font-size: 15px;
+        transition: 0.2s;
+    }
+
+        .sidebar .menu-item:hover,
+        .sidebar .menu-item.active {
+            background: #2a2a3c;
+            color: white;
+        }
+
+        .sidebar .menu-item i {
+            margin-right: 10px;
+        }
+
+/* 
+   TOPBAR
+    */
+
+.topbar {
+    background: white;
+    width: calc(100% - 230px);
+    padding: 15px 25px;
+    border-bottom: 1px solid #ddd;
+    position: fixed;
+    top: 0;
+    left: 230px;
+    right: 0;
+    z-index: 900;
+}
+
+/* 
+   CONTENT AREA
+    */
+
+.content {
+    margin-left: 230px;
+    padding: 25px;
+}
+
+.content-body {
+    margin-top: 80px;
+}
+
+/* Mobil cihazlarda sidebar gizlenecek */
+@media (max-width: 768px) {
+    .sidebar {
+        left: -230px;
+        transition: 0.3s;
+    }
+
+        .sidebar.open {
+            left: 0;
+        }
+
+    .topbar {
+        left: 0;
+        width: 100%;
+    }
+
+    .content {
+        margin-left: 0;
+        padding: 20px;
+    }
+}

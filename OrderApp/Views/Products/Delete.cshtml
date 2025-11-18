@@ -1,0 +1,13 @@
+﻿@model OrderApp.Models.Product
+
+<h3>Are you sure you want to delete this product?</h3>
+
+<ul>
+    <li><b>@Model.StockCode</b></li>
+    <li>@Model.StockName</li>
+</ul>
+
+<form method="post">
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a class="btn btn-secondary" asp-action="Index">Cancel</a>
+</form>
