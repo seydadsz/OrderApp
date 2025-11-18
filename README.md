@@ -1,11 +1,11 @@
-# 🚀 OrderApp  
+#  OrderApp  
 Simple and clean Order Management System built with **ASP.NET Core MVC** and **ADO.NET**.
 
 This project demonstrates product management, customer management, price history tracking, email-based order confirmation, and a fully SQL-driven architecture without Entity Framework.
 
 ---
 
-## 📦 Features
+##  Features
 - Product Management (Unique StockCode)
 - Customer Management (Unique CustomerCode)
 - Product Prices with full history
@@ -16,7 +16,7 @@ This project demonstrates product management, customer management, price history
 
 ---
 
-## 🛠 Technologies
+##  Technologies
 - ASP.NET Core MVC  
 - ADO.NET (SqlConnection, SqlCommand, SqlDataReader)  
 - SQL Server  
@@ -25,7 +25,7 @@ This project demonstrates product management, customer management, price history
 
 ---
 
-## 📂 Project Structure
+##  Project Structure
 OrderApp/
 ├── Controllers/
 ├── Models/
@@ -40,7 +40,7 @@ OrderApp/
 ## 🗄 Database
 The project includes a full database script:
 
-📁 `Database/OrderAppDB.sql`
+ `Database/OrderAppDB.sql`
 
 Contains:
 - Products  
@@ -65,13 +65,13 @@ json
   "Password": "YOUR_APP_PASSWORD"
 }
 
-## ⚠ Email Requirement
+##  Email Requirement
 Gmail requires a **Google App Password** in order to send emails from external applications.  
 Without correct SMTP settings, the **order confirmation feature will not work**.
 
 ---
 
-## 🌐 Recommended Browser
+##  Recommended Browser
 For the best local development experience, use **Microsoft Edge**.
 
 Edge provides:
@@ -81,7 +81,7 @@ Edge provides:
 
 ---
 
-## 📘 Documentation
+##  Documentation
 The project includes the following documentation files:
 
 - **ProjectAnalysis.md** – Detailed project overview  
